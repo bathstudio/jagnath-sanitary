@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAGNATH Bathware | Sanitaryware & CP Fittings</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#202124;background:#fff}
+.top{background:#111827;color:#fff;text-align:center;padding:8px;font-size:13px}
+header{border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:20}
+.nav{max-width:1250px;margin:auto;display:flex;align-items:center;gap:22px;padding:18px 20px}
+.logo{font-size:24px;font-weight:800;letter-spacing:.5px;white-space:nowrap}.logo span{font-weight:400;color:#777}
+.search{flex:1;display:flex;border:1px solid #ddd;border-radius:8px;overflow:hidden}.search input{flex:1;border:0;padding:13px;font-size:14px;outline:0}.search button{border:0;background:#111827;color:#fff;padding:0 18px;cursor:pointer}
+.nav a{color:#222;text-decoration:none;font-size:14px}.cartBtn{background:#111827;color:#fff;border:0;border-radius:8px;padding:12px 16px;cursor:pointer}
+.hero{max-width:1250px;margin:22px auto;padding:0 20px}.heroBox{background:linear-gradient(120deg,#f1f5f9,#e5e7eb);border-radius:18px;padding:55px 7%;min-height:330px;display:flex;align-items:center}
+.hero h1{font-size:46px;line-height:1.05;margin:0 0 14px}.hero p{font-size:17px;color:#555;max-width:570px}.shop{display:inline-block;background:#111827;color:#fff;padding:13px 22px;border-radius:7px;text-decoration:none;margin-top:10px}
+.wrap{max-width:1250px;margin:45px auto;padding:0 20px}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.title h2{margin:0;font-size:28px}.muted{color:#777;font-size:13px}
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.cat{border:1px solid #eee;border-radius:12px;padding:22px 10px;text-align:center;cursor:pointer;background:#fff}.cat:hover{box-shadow:0 6px 20px #00000012}.catIcon{font-size:32px;margin-bottom:10px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{border:1px solid #eee;border-radius:12px;overflow:hidden;background:#fff;position:relative}.pic{height:220px;background:#f6f7f8;display:flex;align-items:center;justify-content:center;font-size:70px}.info{padding:15px}.brand{font-size:12px;color:#777}.name{font-size:15px;font-weight:600;line-height:1.35;min-height:42px;margin:6px 0}.code{font-size:11px;color:#888}.price{margin-top:10px}.old{text-decoration:line-through;color:#999;font-size:13px;margin-right:7px}.new{font-size:18px;font-weight:700}.badge{position:absolute;top:10px;left:10px;background:#111827;color:#fff;font-size:11px;padding:5px 8px;border-radius:5px}.add{width:100%;margin-top:12px;padding:11px;border:0;border-radius:7px;background:#111827;color:#fff;cursor:pointer}.add:hover{opacity:.9}
+.brands{display:flex;gap:14px;flex-wrap:wrap}.brandBox{border:1px solid #eee;padding:18px 30px;border-radius:10px;font-weight:700;background:#fafafa}
+footer{margin-top:60px;background:#111827;color:#fff}.foot{max-width:1250px;margin:auto;padding:40px 20px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.foot h3{margin-top:0}.foot p,.foot li{color:#cbd5e1;font-size:13px;line-height:1.8}.foot ul{list-style:none;padding:0}
+.overlay{position:fixed;inset:0;background:#0008;display:none;z-index:40}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(430px,100%);background:#fff;padding:22px;overflow:auto}.drawerHead{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eee;border-radius:6px;padding:8px 11px;cursor:pointer}.cartItem{display:flex;gap:12px;border-bottom:1px solid #eee;padding:15px 0}.mini{width:70px;height:70px;background:#f4f4f4;display:flex;align-items:center;justify-content:center;font-size:30px;border-radius:8px}.qty{display:flex;gap:8px;align-items:center;margin-top:8px}.qty button{border:1px solid #ddd;background:#fff;border-radius:4px;width:27px;height:27px;cursor:pointer}.total{font-size:20px;font-weight:700;display:flex;justify-content:space-between;margin:20px 0}.checkout{width:100%;padding:14px;border:0;background:#111827;color:#fff;border-radius:8px;font-weight:700;cursor:pointer}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(3,1fr)}.nav a{display:none}.hero h1{font-size:36px}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.products{grid-template-columns:1fr 1fr;gap:10px}.cats{grid-template-columns:repeat(2,1fr)}.nav{gap:10px}.logo{font-size:18px}.heroBox{padding:35px 25px}.hero h1{font-size:30px}.pic{height:170px}}
+</style>
+</head>
+<body>
+<div class="top">Premium Sanitaryware & CP Fittings • Best Price • Fast Delivery</div>
+<header><div class="nav">
+<div class="logo">JAGNATH <span>BATHWARE</span></div>
+<div class="search"><input id="search" placeholder="Search product, brand or article no..."><button onclick="searchProducts()">Search</button></div>
+<a href="#categories">Categories</a><a href="#brands">Brands</a>
+<button class="cartBtn" onclick="openCart()">🛒 Cart <span id="count">0</span></button>
+</div></header>
+
+<section class="hero"><div class="heroBox"><div>
+<div class="muted">SANITARYWARE • CP FITTINGS • BATHROOM SOLUTIONS</div>
+<h1>Upgrade Your Bathroom</h1>
+<p>Shop premium sanitaryware and CP fittings from trusted brands. Find products by category, brand or article number.</p>
+<a class="shop" href="#products">Shop Products</a>
+</div></div></section>
+
+<section class="wrap" id="categories"><div class="title"><h2>Shop By Category</h2><span class="muted">Choose a category</span></div>
+<div class="cats">
+<div class="cat" onclick="filterCat('Sanitaryware')"><div class="catIcon">🚽</div>Sanitaryware</div>
+<div class="cat" onclick="filterCat('CP Fittings')"><div class="catIcon">🚰</div>CP Fittings</div>
+<div class="cat" onclick="filterCat('Shower')"><div class="catIcon">🚿</div>Showers</div>
+<div class="cat" onclick="filterCat('Wash Basin')"><div class="catIcon">🛁</div>Wash Basins</div>
+<div class="cat" onclick="filterCat('Accessories')"><div class="catIcon">🪞</div>Accessories</div>
+<div class="cat" onclick="filterCat('Toilet')"><div class="catIcon">🚻</div>Toilets</div>
+</div></section>
+
+<section class="wrap" id="products"><div class="title"><h2>Featured Products</h2><span class="muted" id="resultText">Showing all products</span></div><div class="products" id="productGrid"></div></section>
+
+<section class="wrap" id="brands"><div class="title"><h2>Top Brands</h2></div>
+<div class="brands"><div class="brandBox">HANSGROHE</div><div class="brandBox">TOTO</div><div class="brandBox">JAQUAR</div><div class="brandBox">AGL</div><div class="brandBox">BELL</div><div class="brandBox">SIMPOLO</div></div></section>
+
+<footer><div class="foot"><div><h3>JAGNATH BATHWARE</h3><p>Premium sanitaryware, CP fittings and bathroom solutions.</p></div><div><h3>Shop</h3><ul><li>Sanitaryware</li><li>CP Fittings</li><li>Showers</li><li>Wash Basins</li></ul></div><div><h3>Customer</h3><ul><li>My Account</li><li>My Orders</li><li>Cart</li><li>Contact Us</li></ul></div><div><h3>Contact</h3><p>Call / WhatsApp<br>+91 XXXXX XXXXX<br><br>Rajkot, Gujarat</p></div></div></footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()"><div class="drawer"><div class="drawerHead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">✕</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">₹0</span></div><button class="checkout" onclick="checkout()">Proceed to Checkout</button></div></div>
+
+<script>
+const products=[
+{id:1,brand:"Hansgrohe",name:"Single Lever Basin Mixer",code:"32525000",cat:"CP Fittings",mrp:71670,price:52265,icon:"🚰"},
+{id:2,brand:"TOTO",name:"Duroplast Seat & Cover Soft Close",code:"TC504CVK",cat:"Sanitaryware",mrp:10400,price:9204,icon:"🚽"},
+{id:3,brand:"Jaquar",name:"Shower Panel – Black",code:"JA011",cat:"Shower",mrp:44000,price:38800,icon:"🚿"},
+{id:4,brand:"AGL",name:"Overhead Rain Shower 8 Inch",code:"331657CP",cat:"Shower",mrp:3495,price:2516,icon:"🚿"},
+{id:5,brand:"Bell",name:"Regal Single Lever Basin Mixer",code:"BL-REGAL-PVD",cat:"CP Fittings",mrp:32805,price:21323,icon:"🚰"},
+{id:6,brand:"Simpolo",name:"Table Top Hand Crafted Basin",code:"SPRING",cat:"Wash Basin",mrp:11090,price:11090,icon:"🛁"},
+{id:7,brand:"TOTO",name:"Wall Hung Toilet",code:"CW-K123",cat:"Toilet",mrp:48000,price:39900,icon:"🚽"},
+{id:8,brand:"AGL",name:"Single Lever Concealed Diverter",code:"291304CP",cat:"CP Fittings",mrp:1865,price:1342,icon:"🚰"},
+{id:9,brand:"Bell",name:"Multi Functional Shower",code:"BLSH126",cat:"Shower",mrp:16395,price:10657,icon:"🚿"},
+{id:10,brand:"Jaquar",name:"Health Faucet",code:"HAF-01",cat:"Accessories",mrp:3250,price:2400,icon:"🚿"},
+{id:11,brand:"Hansgrohe",name:"Rain Shower Head Chrome",code:"26069000",cat:"Shower",mrp:203370,price:148306,icon:"🚿"},
+{id:12,brand:"TOTO",name:"One Piece Toilet",code:"CW-123",cat:"Toilet",mrp:56000,price:44800,icon:"🚽"}
+];
+let cart=JSON.parse(localStorage.getItem("jagnathCart")||"[]");
+const money=n=>"₹"+n.toLocaleString("en-IN");
+function render(list=products){
+const grid=document.getElementById("productGrid");
+grid.innerHTML=list.map(p=>`<div class="card"><div class="badge">${p.mrp>p.price?Math.round((1-p.price/p.mrp)*100)+"% OFF":"Premium"}</div><div class="pic">${p.icon}</div><div class="info"><div class="brand">${p.brand}</div><div class="name">${p.name}</div><div class="code">Article No: ${p.code}</div><div class="price">${p.mrp>p.price?`<span class="old">${money(p.mrp)}</span>`:""}<span class="new">${money(p.price)}</span></div><button class="add" onclick="add(${p.id})">ADD TO CART</button></div></div>`).join("");
+document.getElementById("resultText").textContent=`${list.length} products`;
+}
+function add(id){const p=products.find(x=>x.id===id);const x=cart.find(x=>x.id===id);if(x)x.qty++;else cart.push({id,qty:1});save();openCart()}
+function save(){localStorage.setItem("jagnathCart",JSON.stringify(cart));updateCart()}
+function updateCart(){document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{const p=products.find(y=>y.id===x.id);return `<div class="cartItem"><div class="mini">${p.icon}</div><div style="flex:1"><b>${p.name}</b><div class="muted">${p.brand} • ${p.code}</div><div class="qty"><button onclick="change(${p.id},-1)">−</button>${x.qty}<button onclick="change(${p.id},1)">+</button><span style="margin-left:auto;font-weight:700">${money(p.price*x.qty)}</span></div></div></div>`}).join(""):"<p class='muted'>Your cart is empty.</p>";document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0))}
+function change(id,d){const x=cart.find(x=>x.id===id);x.qty+=d;if(x.qty<=0)cart=cart.filter(x=>x.id!==id);save()}
+function openCart(){document.getElementById("overlay").classList.add("open");updateCart()}
+function closeCart(){document.getElementById("overlay").classList.remove("open")}
+function filterCat(cat){render(products.filter(p=>p.cat===cat));location.hash="products"}
+function searchProducts(){const q=document.getElementById("search").value.toLowerCase();render(products.filter(p=>(p.name+" "+p.brand+" "+p.code+" "+p.cat).toLowerCase().includes(q)))}
+document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter")searchProducts()});
+function checkout(){if(!cart.length)return alert("Cart is empty");alert("Checkout module ready for the next step: customer details, address, GST and online/WhatsApp order.")} 
+render();updateCart();
+</script>
+</body></html>
