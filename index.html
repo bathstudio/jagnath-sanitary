@@ -11,7 +11,8 @@
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  color:#111827
+  color:#111827;
+  background:#fff
 }
 
 .top{
@@ -62,7 +63,8 @@ body{
   flex:1;
   border:0;
   padding:0 15px;
-  outline:0
+  outline:0;
+  font-size:14px
 }
 
 .search button{
@@ -70,7 +72,8 @@ body{
   border:0;
   background:#0b1424;
   color:#fff;
-  cursor:pointer
+  cursor:pointer;
+  font-size:20px
 }
 
 .cart{
@@ -262,7 +265,8 @@ body{
   border:1px solid #e5e7eb;
   border-radius:10px;
   overflow:hidden;
-  position:relative
+  position:relative;
+  background:#fff
 }
 
 .pic{
@@ -341,7 +345,8 @@ body{
   border:1px solid #ddd;
   background:#fff;
   border-radius:6px;
-  width:42px
+  width:42px;
+  cursor:pointer
 }
 
 .side{
@@ -377,6 +382,7 @@ body{
   font-size:20px
 }
 
+/* CART */
 .overlay,
 .modalbg{
   display:none;
@@ -402,20 +408,24 @@ body{
 
 .drawerHead{
   display:flex;
-  justify-content:space-between
+  justify-content:space-between;
+  align-items:center
 }
 
 .close{
   border:0;
   padding:7px;
-  cursor:pointer
+  cursor:pointer;
+  background:#eee;
+  border-radius:5px
 }
 
 .cartItem{
   display:flex;
   gap:10px;
   border-bottom:1px solid #eee;
-  padding:14px 0
+  padding:14px 0;
+  align-items:center
 }
 
 .cartItem img{
@@ -423,6 +433,14 @@ body{
   height:65px;
   object-fit:contain;
   background:#f7f7f7
+}
+
+.qtyBtn{
+  border:1px solid #ddd;
+  background:#fff;
+  padding:3px 8px;
+  cursor:pointer;
+  border-radius:4px
 }
 
 .total{
@@ -433,6 +451,7 @@ body{
   margin:20px 0
 }
 
+/* PRODUCT MODAL */
 .modalbg{
   align-items:center;
   justify-content:center;
@@ -447,7 +466,9 @@ body{
   background:#fff;
   width:min(900px,100%);
   padding:22px;
-  border-radius:10px
+  border-radius:10px;
+  max-height:90vh;
+  overflow:auto
 }
 
 .detail{
@@ -472,6 +493,57 @@ body{
   font-weight:900
 }
 
+/* CHECKOUT */
+.checkoutForm{
+  display:grid;
+  gap:12px;
+  margin-top:15px
+}
+
+.checkoutForm input,
+.checkoutForm textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  font-family:Arial,sans-serif;
+  outline:none;
+  font-size:14px
+}
+
+.checkoutForm textarea{
+  min-height:90px;
+  resize:vertical
+}
+
+.checkoutSummary{
+  background:#f7f7f7;
+  padding:15px;
+  border-radius:8px;
+  margin:15px 0
+}
+
+.checkoutTotal{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:15px
+}
+
+.whatsappBtn{
+  background:#159447;
+  color:#fff;
+  border:0;
+  width:100%;
+  padding:14px;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:15px
+}
+
+/* FOOTER */
 footer{
   background:#0b1424;
   color:#fff;
@@ -499,6 +571,7 @@ footer ul{
   padding:0
 }
 
+/* RESPONSIVE */
 @media(max-width:1000px){
 
   .products{
@@ -525,11 +598,21 @@ footer ul{
   }
 
   .head{
-    flex-wrap:wrap
+    flex-wrap:wrap;
+    padding:10px 15px
+  }
+
+  .header img{
+    width:90px;
+    height:40px
   }
 
   .search{
     flex-basis:100%
+  }
+
+  .cart{
+    padding:10px
   }
 
   .services{
@@ -548,14 +631,18 @@ footer ul{
     font-size:38px
   }
 
+  .heroText{
+    padding:55px 6%
+  }
+
   .detail{
     grid-template-columns:1fr
   }
 
-  .header img{
-    width:90px;
-    height:40px
+  .detailImg{
+    height:300px
   }
+
 }
 </style>
 </head>
@@ -563,9 +650,11 @@ footer ul{
 <body>
 
 <div class="top">
-  🚚 Fast Delivery &nbsp;&nbsp;
-  🛡️ 100% Genuine Products &nbsp;&nbsp;
-  💰 Best Dealer Price
+  <span>
+    🚚 Fast Delivery &nbsp;&nbsp;
+    🛡️ 100% Genuine Products &nbsp;&nbsp;
+    💰 Best Dealer Price
+  </span>
   <span>📞 +91 98250 12345</span>
 </div>
 
@@ -777,53 +866,43 @@ footer ul{
   <div class="foot">
 
     <div>
-
       <h2>JAGNATH BATHWARE</h2>
-
       <p>
         Premium sanitaryware and CP fittings for modern bathrooms.
       </p>
-
     </div>
 
     <div>
-
       <h3>Quick Links</h3>
-
       <ul>
         <li>About Us</li>
         <li>Contact Us</li>
         <li>Brands</li>
         <li>Offers</li>
       </ul>
-
     </div>
 
     <div>
-
       <h3>Categories</h3>
-
       <ul>
         <li>Sanitaryware</li>
         <li>CP Fittings</li>
         <li>Showers</li>
         <li>Wash Basins</li>
       </ul>
-
     </div>
 
     <div>
-
       <h3>Contact</h3>
-
       <p>📞 +91 98250 12345</p>
       <p>✉ info@jagnathbathware.com</p>
-
     </div>
 
   </div>
 
 </footer>
+
+<!-- CART -->
 
 <div
   class="overlay"
@@ -855,7 +934,7 @@ footer ul{
     <button
       class="gold"
       style="width:100%"
-      onclick="alert('Next step: customer details + WhatsApp order confirmation.')"
+      onclick="openCheckout()"
     >
       PROCEED TO CHECKOUT
     </button>
@@ -863,6 +942,8 @@ footer ul{
   </div>
 
 </div>
+
+<!-- PRODUCT DETAILS -->
 
 <div
   class="modalbg"
@@ -888,6 +969,83 @@ footer ul{
 
 </div>
 
+<!-- CHECKOUT -->
+
+<div
+  class="modalbg"
+  id="checkoutModal"
+  onclick="if(event.target===this)closeCheckout()"
+>
+
+  <div class="modal">
+
+    <div class="drawerHead">
+
+      <h2>Customer Details</h2>
+
+      <button class="close" onclick="closeCheckout()">
+        ✕
+      </button>
+
+    </div>
+
+    <div class="checkoutSummary">
+
+      <h3>Order Summary</h3>
+
+      <div id="checkoutItems"></div>
+
+      <div class="checkoutTotal">
+
+        <span>Total</span>
+
+        <span id="checkoutTotal">
+          ₹0
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="checkoutForm">
+
+      <input
+        type="text"
+        id="customerName"
+        placeholder="Customer Name *"
+      >
+
+      <input
+        type="tel"
+        id="customerMobile"
+        placeholder="Mobile Number *"
+        maxlength="10"
+      >
+
+      <textarea
+        id="customerAddress"
+        placeholder="Delivery Address *"
+      ></textarea>
+
+      <input
+        type="text"
+        id="customerCity"
+        placeholder="City *"
+      >
+
+      <button
+        class="whatsappBtn"
+        onclick="sendWhatsAppOrder()"
+      >
+        📱 SEND ORDER ON WHATSAPP
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 <script>
 
 const JSON_URL =
@@ -904,15 +1062,19 @@ JSON.parse(localStorage.getItem('jagnath_cart') || '[]');
 const money =
 x => '₹' + Number(x || 0).toLocaleString('en-IN');
 
+
 function img(x){
 
   return x
-    ? (x.startsWith('http')
-      ? x
-      : BASE + encodeURIComponent(x).replace(/%2F/g,'/'))
+    ? (
+        x.startsWith('http')
+        ? x
+        : BASE + encodeURIComponent(x).replace(/%2F/g,'/')
+      )
     : '';
 
 }
+
 
 function esc(x){
 
@@ -929,6 +1091,7 @@ function esc(x){
 
 }
 
+
 function price(p){
 
   let o = p.offer;
@@ -938,10 +1101,12 @@ function price(p){
 
   if(typeof o === 'string'){
 
-    let m = o.match(/(\d+(?:\.\d+)?)\s*%/);
+    let m =
+      o.match(/(\d+(?:\.\d+)?)\s*%/);
 
     if(m)
-      return Number(p.mrp || 0) * Number(m[1]) / 100;
+      return Number(p.mrp || 0)
+        * Number(m[1]) / 100;
 
     let n =
       parseFloat(o.replace(/[^\d.]/g,''));
@@ -955,20 +1120,26 @@ function price(p){
 
 }
 
+
 function disc(p){
 
   return p.mrp > price(p)
-    ? Math.round((1 - price(p) / p.mrp) * 100)
+    ? Math.round(
+        (1 - price(p) / p.mrp) * 100
+      )
     : 0;
 
 }
+
 
 async function load(){
 
   try{
 
     let r =
-      await fetch(JSON_URL + '?v=' + Date.now());
+      await fetch(
+        JSON_URL + '?v=' + Date.now()
+      );
 
     if(!r.ok)
       throw new Error('JSON load failed');
@@ -991,6 +1162,7 @@ async function load(){
 
 }
 
+
 function render(a,t){
 
   document.getElementById('title').textContent = t;
@@ -1001,14 +1173,14 @@ function render(a,t){
     ? a.map(p => {
 
         let d = disc(p);
-
         let im = img(p.images?.[0]);
 
         return `
 
         <article class="card">
 
-          ${d
+          ${
+            d
             ? `<div class="badge">${d}% OFF</div>`
             : ''
           }
@@ -1081,6 +1253,7 @@ function render(a,t){
 
 }
 
+
 function searchProducts(){
 
   let q =
@@ -1115,6 +1288,7 @@ function searchProducts(){
 
 }
 
+
 function category(c){
 
   render(
@@ -1131,9 +1305,12 @@ function category(c){
 
   document
     .getElementById('productsSection')
-    .scrollIntoView({behavior:'smooth'});
+    .scrollIntoView({
+      behavior:'smooth'
+    });
 
 }
+
 
 function brand(b){
 
@@ -1147,9 +1324,12 @@ function brand(b){
 
   document
     .getElementById('productsSection')
-    .scrollIntoView({behavior:'smooth'});
+    .scrollIntoView({
+      behavior:'smooth'
+    });
 
 }
+
 
 function offers(){
 
@@ -1160,9 +1340,12 @@ function offers(){
 
   document
     .getElementById('productsSection')
-    .scrollIntoView({behavior:'smooth'});
+    .scrollIntoView({
+      behavior:'smooth'
+    });
 
 }
+
 
 function allProducts(){
 
@@ -1173,9 +1356,12 @@ function allProducts(){
 
   document
     .getElementById('productsSection')
-    .scrollIntoView({behavior:'smooth'});
+    .scrollIntoView({
+      behavior:'smooth'
+    });
 
 }
+
 
 function add(id){
 
@@ -1195,6 +1381,7 @@ function add(id){
 
 }
 
+
 function save(){
 
   localStorage.setItem(
@@ -1205,6 +1392,7 @@ function save(){
   update();
 
 }
+
 
 function update(){
 
@@ -1222,35 +1410,49 @@ function update(){
         let p =
           P.find(y => y.id === x.id);
 
-        return p
+        if(!p)
+          return '';
 
-        ? `
+        return `
 
         <div class="cartItem">
 
-          <img src="${img(p.images?.[0])}">
+          <img
+            src="${img(p.images?.[0])}"
+            alt=""
+          >
 
           <div style="flex:1">
 
-            <b>${esc(p.name)}</b>
+            <b>
+              ${esc(p.name)}
+            </b>
 
             <div class="code">
               ${esc(p.article)}
             </div>
 
-            <button
-              onclick="qty(${p.id},-1)"
-            >
-              −
-            </button>
+            <div style="margin-top:6px">
 
-            ${x.qty}
+              <button
+                class="qtyBtn"
+                onclick="qty(${p.id},-1)"
+              >
+                −
+              </button>
 
-            <button
-              onclick="qty(${p.id},1)"
-            >
-              +
-            </button>
+              <span style="padding:0 8px">
+                ${x.qty}
+              </span>
+
+              <button
+                class="qtyBtn"
+                onclick="qty(${p.id},1)"
+              >
+                +
+              </button>
+
+            </div>
 
           </div>
 
@@ -1260,9 +1462,7 @@ function update(){
 
         </div>
 
-        `
-
-        : '';
+        `;
 
       }).join('')
 
@@ -1270,20 +1470,26 @@ function update(){
 
   document.getElementById('total').textContent =
     money(
-      cart.reduce((s,x) => {
+      cart.reduce(
+        (s,x) => {
 
-        let p =
-          P.find(y => y.id === x.id);
+          let p =
+            P.find(y => y.id === x.id);
 
-        return s +
-          (p
-            ? price(p) * x.qty
-            : 0);
+          return s +
+            (
+              p
+              ? price(p) * x.qty
+              : 0
+            );
 
-      },0)
+        },
+        0
+      )
     );
 
 }
+
 
 function qty(id,d){
 
@@ -1306,6 +1512,7 @@ function qty(id,d){
 
 }
 
+
 function openCart(){
 
   document
@@ -1316,6 +1523,7 @@ function openCart(){
 
 }
 
+
 function closeCart(){
 
   document
@@ -1323,6 +1531,9 @@ function closeCart(){
     .classList.remove('open');
 
 }
+
+
+/* PRODUCT DETAILS */
 
 function product(id){
 
@@ -1397,6 +1608,7 @@ function product(id){
 
 }
 
+
 function closeProduct(){
 
   document
@@ -1404,6 +1616,232 @@ function closeProduct(){
     .classList.remove('open');
 
 }
+
+
+/* CHECKOUT */
+
+function openCheckout(){
+
+  if(cart.length === 0){
+
+    alert('Your cart is empty.');
+
+    return;
+
+  }
+
+  document
+    .getElementById('overlay')
+    .classList.remove('open');
+
+  document
+    .getElementById('checkoutModal')
+    .classList.add('open');
+
+  document.getElementById('checkoutItems').innerHTML =
+    cart.map(x => {
+
+      let p =
+        P.find(y => y.id === x.id);
+
+      if(!p)
+        return '';
+
+      return `
+
+        <div style="
+          padding:10px 0;
+          border-bottom:1px solid #eee;
+        ">
+
+          <b>
+            ${esc(p.name)}
+          </b>
+
+          <br>
+
+          <small>
+            Article No: ${esc(p.article)}
+          </small>
+
+          <br>
+
+          Qty: ${x.qty}
+          × ${money(price(p))}
+
+          =
+          <b>
+            ${money(price(p) * x.qty)}
+          </b>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+  document.getElementById('checkoutTotal').textContent =
+    money(
+      cart.reduce(
+        (s,x) => {
+
+          let p =
+            P.find(y => y.id === x.id);
+
+          return s +
+            (
+              p
+              ? price(p) * x.qty
+              : 0
+            );
+
+        },
+        0
+      )
+    );
+
+}
+
+
+function closeCheckout(){
+
+  document
+    .getElementById('checkoutModal')
+    .classList.remove('open');
+
+}
+
+
+function sendWhatsAppOrder(){
+
+  let name =
+    document
+      .getElementById('customerName')
+      .value
+      .trim();
+
+  let mobile =
+    document
+      .getElementById('customerMobile')
+      .value
+      .trim();
+
+  let address =
+    document
+      .getElementById('customerAddress')
+      .value
+      .trim();
+
+  let city =
+    document
+      .getElementById('customerCity')
+      .value
+      .trim();
+
+
+  if(!name || !mobile || !address || !city){
+
+    alert(
+      'Please fill all customer details.'
+    );
+
+    return;
+
+  }
+
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+
+    alert(
+      'Please enter a valid 10 digit mobile number.'
+    );
+
+    return;
+
+  }
+
+
+  let orderText =
+`*JAGNATH BATHWARE - NEW ORDER*
+
+*CUSTOMER DETAILS*
+
+Name: ${name}
+Mobile: ${mobile}
+Address: ${address}
+City: ${city}
+
+*ORDER DETAILS*
+`;
+
+
+  cart.forEach(x => {
+
+    let p =
+      P.find(y => y.id === x.id);
+
+    if(!p)
+      return;
+
+    orderText +=
+`
+
+• ${p.name}
+Article No: ${p.article}
+Qty: ${x.qty}
+Rate: ${money(price(p))}
+Amount: ${money(price(p) * x.qty)}
+`;
+
+  });
+
+
+  let totalAmount =
+    cart.reduce(
+      (s,x) => {
+
+        let p =
+          P.find(y => y.id === x.id);
+
+        return s +
+          (
+            p
+            ? price(p) * x.qty
+            : 0
+          );
+
+      },
+      0
+    );
+
+
+  orderText +=
+`
+
+*TOTAL AMOUNT: ${money(totalAmount)}*
+
+Please confirm this order.`;
+
+
+  /* JAGNATH BATHWARE WHATSAPP NUMBER */
+  let whatsappNumber =
+    '919824854004';
+
+
+  let whatsappURL =
+    'https://wa.me/' +
+    whatsappNumber +
+    '?text=' +
+    encodeURIComponent(orderText);
+
+
+  window.open(
+    whatsappURL,
+    '_blank'
+  );
+
+}
+
 
 load();
 
