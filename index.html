@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JAGNATH BATHWARE</title>
+<title>JAGNATH SANITARIES</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;color:#111827;background:#fff}
@@ -136,12 +136,12 @@ footer ul{list-style:none;padding:0}
 
 <div class="top">
   <span>🚚 Fast Delivery &nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp; 💰 Best Dealer Price</span>
-  <span>📞 +91 9824854004</span>
+  <span>📞 9824854004</span>
 </div>
 
 <header class="header">
   <div class="head">
-    <img src="logo.png.jpeg" alt="Jagnath Bathware">
+    <img src="logo.png.jpeg" alt="JAGNATH SANITARIES">
     <div class="search">
       <input id="q" placeholder="Search for products, brands or Article No." onkeydown="if(event.key==='Enter')searchProducts()">
       <button onclick="searchProducts()">⌕</button>
@@ -157,7 +157,7 @@ footer ul{list-style:none;padding:0}
 
 <section class="hero">
   <div class="heroText">
-    <p>JAGNATH BATHWARE</p>
+    <p>JAGNATH SANITARIES</p>
     <h1>PREMIUM BATHROOM<br><span>COLLECTION</span></h1>
     <div>Elevate your bathroom with premium sanitaryware and CP fittings from trusted brands.</div>
     <button class="gold" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">SHOP NOW →</button>
@@ -203,10 +203,10 @@ footer ul{list-style:none;padding:0}
 
 <footer>
   <div class="foot">
-    <div><h2>JAGNATH BATHWARE</h2><p>Premium sanitaryware and CP fittings for modern bathrooms.</p></div>
+    <div><h2>JAGNATH SANITARIES</h2><p>Premium sanitaryware and CP fittings for modern bathrooms.</p></div>
     <div><h3>Quick Links</h3><ul><li>About Us</li><li>Contact Us</li><li>Brands</li><li>Offers</li></ul></div>
     <div><h3>Categories</h3><ul id="footerCategories"></ul></div>
-    <div><h3>Contact</h3><p>📞 +91 98250 12345</p><p>✉ info@jagnathbathware.com</p></div>
+    <div><h3>Contact</h3><p>📞 9824854004</p><p>✉ jagnathonline@gmail.com</p></div>
   </div>
 </footer>
 
@@ -310,21 +310,33 @@ function buildCategoryUI(){
       <button type="button" class="dropBtn" onclick="toggleCpMenu()">CP FITTING ▾</button>
       <div class="dropList">${cpHtml}</div>
     </div>`+
-    `<div class="dropMenu" id="sanitaryMenu">
-      <button type="button" class="dropBtn" onclick="toggleSanitaryMenu()">SANITARY ▾</button>
-      <div class="dropList">
-        <button type="button" onclick='productName("BATHTUB");closeSanitaryMenu()'>BATHTUB</button>
-        <button type="button" onclick='productName("ECO WASHER");closeSanitaryMenu()'>ECO WASHER</button>
-        <button type="button" onclick='productName("SEAT COVER");closeSanitaryMenu()'>SEAT COVER</button>
-        <button type="button" onclick='productName("URINAL");closeSanitaryMenu()'>URINAL</button>
-        <button type="button" onclick='productName("WALL HUNG TOILET");closeSanitaryMenu()'>WALL HUNG TOILET</button>
-        <button type="button" onclick='productName("WASH BASIN");closeSanitaryMenu()'>WASH BASIN</button>
-        <button type="button" onclick='productName("WASHLET");closeSanitaryMenu()'>WASHLET</button>
-      </div>
-    </div>`;
+    `<button type="button" onclick='category("SANITARY")'>SANITARY</button>`;
 
-  document.getElementById('categoryGrid').innerHTML=ordered.length?ordered.map((c,i)=>{
-    const icons=['🚽','🚰','🛁','🧴','🔧','🚿','💧','▣'];
+  document.getElementById('categoryGrid').innerHTML=`<div class="cat" role="button" tabindex="0" onclick='productName('OVERHEAD SHOWER')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('OVERHEAD SHOWER')'>
+      <div class="catIcon">🚿</div><b>OVERHEAD SHOWER</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('DIVERTER')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('DIVERTER')'>
+      <div class="catIcon">🔧</div><b>DIVERTER</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('BASIN MIXER')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('BASIN MIXER')'>
+      <div class="catIcon">🚰</div><b>BASIN MIXER</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('WALL HUNG TOILET')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('WALL HUNG TOILET')'>
+      <div class="catIcon">🚽</div><b>WALL HUNG TOILET</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('WASH BASIN')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('WASH BASIN')'>
+      <div class="catIcon">◯</div><b>WASH BASIN</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('URINAL')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('URINAL')'>
+      <div class="catIcon">🚻</div><b>URINAL</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('BATHTUB')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('BATHTUB')'>
+      <div class="catIcon">🛁</div><b>BATHTUB</b>
+    </div><div class="cat" role="button" tabindex="0" onclick='productName('HAND SHOWER')'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName('HAND SHOWER')'>
+      <div class="catIcon">🚿</div><b>HAND SHOWER</b>
+    </div>`;
     return `<div class="cat" role="button" tabindex="0"
       onclick='category(${JSON.stringify(c)})'
       onkeydown='if(event.key==="Enter"||event.key===" ")category(${JSON.stringify(c)})'>
@@ -354,23 +366,13 @@ function buildCategoryUI(){
   ).join('');
 }
 
-function toggleSanitaryMenu(){
-  document.getElementById('sanitaryMenu')?.classList.toggle('open');
-  document.getElementById('cpMenu')?.classList.remove('open');
-}
-function closeSanitaryMenu(){
-  document.getElementById('sanitaryMenu')?.classList.remove('open');
-}
-
 function toggleCpMenu(){
   document.getElementById('cpMenu')?.classList.toggle('open');
 }
 function closeCpMenu(){document.getElementById('cpMenu')?.classList.remove('open');}
 document.addEventListener('click',function(e){
   const cp=document.getElementById('cpMenu');
-  const sanitary=document.getElementById('sanitaryMenu');
   if(cp && !cp.contains(e.target)) cp.classList.remove('open');
-  if(sanitary && !sanitary.contains(e.target)) sanitary.classList.remove('open');
 });
 async function load(){
   try{
@@ -544,7 +546,7 @@ function sendWhatsAppOrder(){
 
   const total=document.getElementById('total').textContent;
   const message=
-`JAGNATH BATHWARE - NEW ORDER
+`JAGNATH SANITARIES - NEW ORDER
 
 Customer Name: ${name}
 Mobile: ${phone}
