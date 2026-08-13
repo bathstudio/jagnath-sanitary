@@ -1058,15 +1058,9 @@ x => '₹' + Number(x || 0).toLocaleString('en-IN');
 
 
 function img(x){
-
-  return x
-    ? (
-        x.startsWith('http')
-        ? x
-        : BASE + encodeURIComponent(x).replace(/%2F/g,'/')
-      )
-    : '';
-
+  if(!x)return '';
+  if(x.startsWith('http') || x.startsWith('data:')) return x;
+  return BASE+encodeURIComponent(x).replace(/%2F/g,'/');
 }
 
 
