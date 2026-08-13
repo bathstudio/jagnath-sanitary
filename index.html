@@ -39,7 +39,7 @@ body{margin:0;font-family:Arial,sans-serif;color:#111827;background:#fff}
 .cat{border:1px solid #e5e7eb;border-radius:9px;padding:12px;text-align:center;cursor:pointer;background:#fff}
 .cat:hover{box-shadow:0 5px 20px #0001}
 .catIcon{height:100px;background:#f7f7f7;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:45px}
-.cat b{display:block;margin-top:10px;font-size:13px}
+.cat b{display:block;margin-top:10px;font-size:13px} #productNameGrid{grid-template-columns:repeat(5,1fr)} #productNameGrid .catIcon{height:70px;font-size:30px}
 .layout{display:grid;grid-template-columns:1fr 290px;gap:20px}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .card{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;position:relative;background:#fff}
@@ -130,6 +130,11 @@ footer ul{list-style:none;padding:0}
 <section class="wrap">
   <div class="title"><h2>SHOP BY CATEGORY</h2></div>
   <div class="cats" id="categoryGrid"><p>Loading categories...</p></div>
+</section>
+
+<section class="wrap">
+  <div class="title"><h2>SHOP BY PRODUCT</h2></div>
+  <div class="cats" id="productNameGrid"><p>Loading product names...</p></div>
 </section>
 
 <section class="wrap" id="productsSection">
@@ -246,6 +251,19 @@ function buildCategoryUI(){
     </div>`;
   }).join(''):'<p>No categories found.</p>';
 
+  const names=[...new Set(P.map(p=>String(p.name||'').trim()).filter(Boolean))]
+    .sort((a,b)=>a.localeCompare(b));
+
+  document.getElementById('productNameGrid').innerHTML=names.length?names.map((n,i)=>{
+    const icons=['◉','◌','▣','◆','◇','●'];
+    return `<div class="cat" role="button" tabindex="0"
+      onclick='productName(${JSON.stringify(n)})'
+      onkeydown='if(event.key==="Enter"||event.key===" ")productName(${JSON.stringify(n)})'>
+      <div class="catIcon">${icons[i%icons.length]}</div>
+      <b>${esc(n)}</b>
+    </div>`;
+  }).join(''):'<p>No product names found.</p>';
+
   document.getElementById('footerCategories').innerHTML=cats.map(c=>
     `<li style="cursor:pointer" onclick="category(${JSON.stringify(c)})">${esc(c)}</li>`
   ).join('');
@@ -311,23 +329,28 @@ function cleanCategory(x){
 }
 
 function category(c){
-  const wanted=cleanCategory(c);
-
+  const wanted=String(c||'').trim().toUpperCase();
   const result=P.filter(p=>{
-    const actual=cleanCategory(p.category);
+    const actual=String(p.category||'').trim().toUpperCase();
     return actual===wanted || actual.includes(wanted) || wanted.includes(actual);
   });
-
   if(!result.length){
     alert('Is category me koi product nahi mila: '+c);
     return;
   }
-
   render(result,String(c).toUpperCase()+' PRODUCTS');
-  document.getElementById('productsSection').scrollIntoView({
-    behavior:'smooth',
-    block:'start'
-  });
+  document.getElementById('productsSection').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function productName(n){
+  const wanted=String(n||'').trim().toUpperCase();
+  const result=P.filter(p=>String(p.name||'').trim().toUpperCase()===wanted);
+  if(!result.length){
+    alert('Is Product Name me koi product nahi mila: '+n);
+    return;
+  }
+  render(result,String(n).toUpperCase()+' PRODUCTS');
+  document.getElementById('productsSection').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function brand(b){
@@ -441,7 +464,7 @@ function product(id){
   let p=P.find(x=>x.id===id);
   if(!p)return;
 
-  const finish=p.finish ?? p['FINISH/COLOR'] ?? p['Finish/Color'] ?? p.finishColor ?? '';
+  const finish=p.finish ?? p['FINISH/COLOR'] ?? p['Finish/Color'] ?? p.finishColor ?? p.color ?? '';
 
   document.getElementById('detail').innerHTML=`
     <div class="detailImg">
