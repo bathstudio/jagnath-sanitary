@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JAGNATH BATHWARE</title>
+<title>JAGNATH SANITARIES</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;color:#111827;background:#fff}
@@ -15,7 +15,7 @@ body{margin:0;font-family:Arial,sans-serif;color:#111827;background:#fff}
 .search input{flex:1;border:0;padding:0 15px;outline:0}
 .search button{width:60px;border:0;background:#0b1424;color:#fff;cursor:pointer}
 .cart{background:#0b1424;color:#fff;border:0;border-radius:7px;padding:12px 16px;cursor:pointer}
-.nav{background:#0b1424;color:#fff}
+.nav{background:#0b1424;color:#fff;overflow:visible}
 .navin{max-width:1400px;margin:auto;display:flex;overflow:auto}
 .nav button{background:transparent;border:0;color:#fff;padding:14px 19px;font-weight:bold;white-space:nowrap;cursor:pointer}
 .nav button:first-child{background:#b8860b}
@@ -85,6 +85,51 @@ footer p,footer li{color:#b8c0cc;font-size:13px;line-height:1.7}
 footer ul{list-style:none;padding:0}
 @media(max-width:1000px){.products{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}.side{display:none}.cats{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:650px){.top{display:none}.head{flex-wrap:wrap}.head img{width:120px;height:48px}.search{flex-basis:100%}.services{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr);gap:9px}.pic{height:170px}.hero h1{font-size:38px}.detail{grid-template-columns:1fr}.detailImg{height:300px}}
+
+/* SHOP BY PRODUCT — simple text links */
+#productNameGrid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  align-items:center;
+}
+#productNameGrid .cat{
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  margin:0;
+  width:auto;
+  text-align:left;
+  cursor:pointer;
+}
+#productNameGrid .cat:hover{
+  box-shadow:none !important;
+  text-decoration:underline;
+}
+#productNameGrid .catIcon{
+  display:none !important;
+}
+#productNameGrid .cat b{
+  display:inline !important;
+  margin:0 !important;
+  font-size:14px;
+  font-weight:600;
+  color:#1769aa;
+}
+
+
+/* Category dropdown menus */
+.navin{position:relative;overflow:visible}
+.dropMenu{position:relative;display:inline-block}
+.dropBtn{background:transparent;border:0;color:#fff;padding:14px 19px;font-weight:bold;white-space:nowrap;cursor:pointer}
+.dropBtn:hover{background:#1b2638}
+.dropList{display:none;position:absolute;top:100%;left:0;min-width:235px;max-height:420px;overflow-y:auto;background:#fff;border:1px solid #ddd;box-shadow:0 8px 22px #0002;z-index:9999}
+.dropMenu.open .dropList{display:block}
+.dropList button{display:block;width:100%;background:#fff;color:#111827;border:0;border-bottom:1px solid #eee;padding:11px 14px;text-align:left;font-weight:600;cursor:pointer;white-space:normal}
+.dropList button:hover{background:#f5f5f5;color:#b8860b}
+@media(max-width:650px){.dropList{position:fixed;left:8px;right:8px;top:100px;min-width:0;max-height:60vh}}
 </style>
 </head>
 <body>
@@ -96,7 +141,7 @@ footer ul{list-style:none;padding:0}
 
 <header class="header">
   <div class="head">
-    <img src="logo.png.jpeg" alt="Jagnath Bathware">
+    <img src="logo.png.jpeg" alt="Jagnath Sanitaries">
     <div class="search">
       <input id="q" placeholder="Search for products, brands or Article No." onkeydown="if(event.key==='Enter')searchProducts()">
       <button onclick="searchProducts()">⌕</button>
@@ -112,7 +157,7 @@ footer ul{list-style:none;padding:0}
 
 <section class="hero">
   <div class="heroText">
-    <p>JAGNATH BATHWARE</p>
+    <p>JAGNATH SANITARIES</p>
     <h1>PREMIUM BATHROOM<br><span>COLLECTION</span></h1>
     <div>Elevate your bathroom with premium sanitaryware and CP fittings from trusted brands.</div>
     <button class="gold" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">SHOP NOW →</button>
@@ -158,10 +203,10 @@ footer ul{list-style:none;padding:0}
 
 <footer>
   <div class="foot">
-    <div><h2>JAGNATH BATHWARE</h2><p>Premium sanitaryware and CP fittings for modern bathrooms.</p></div>
+    <div><h2>JAGNATH SANITARIES</h2><p>Premium sanitaryware and CP fittings for modern bathrooms.</p></div>
     <div><h3>Quick Links</h3><ul><li>About Us</li><li>Contact Us</li><li>Brands</li><li>Offers</li></ul></div>
     <div><h3>Categories</h3><ul id="footerCategories"></ul></div>
-    <div><h3>Contact</h3><p>📞 +91 98250 12345</p><p>✉ info@jagnathbathware.com</p></div>
+    <div><h3>Contact</h3><p>📞 +91 9824854004</p><p>✉ jagnathonline@gmail.com</p></div>
   </div>
 </footer>
 
@@ -237,11 +282,37 @@ function getBrands(){
 function buildCategoryUI(){
   const cats=getCategories();
 
+  // Main menu: keep ALL PRODUCTS + the original main categories.
+  const preferred=['ACCESSORIES','BATHTUB','SANITARY'];
+  const ordered=preferred.filter(c=>cats.some(x=>String(x).trim().toUpperCase()===c));
+
+  // CP FITTING is a dropdown, not a normal category button.
+  const cpNames=[
+    'BASIN MIXER',
+    'Flush Panel',
+    'HAND SHOWER',
+    'KITCHEN FAUCET',
+    'OVERHAED SHOWER',
+    'SENSOR FAUCET',
+    'SHOWER PANEL',
+    'DIVERTER'
+  ];
+
+  const cpHtml=cpNames.map(n=>
+    `<button type="button" onclick='productName(${JSON.stringify(n)});closeCpMenu()'>${esc(n)}</button>`
+  ).join('');
+
   document.getElementById('navCategories').innerHTML=
     `<button type="button" onclick="allProducts()">☰ ALL PRODUCTS</button>`+
-    cats.map(c=>`<button type="button" onclick='category(${JSON.stringify(c)})'>${esc(c)}</button>`).join('');
+    `<button type="button" onclick='category("ACCESSORIES")'>ACCESSORIES</button>`+
+    `<button type="button" onclick='category("BATHTUB")'>BATHTUB</button>`+
+    `<div class="dropMenu" id="cpMenu">
+      <button type="button" class="dropBtn" onclick="toggleCpMenu()">CP FITTING ▾</button>
+      <div class="dropList">${cpHtml}</div>
+    </div>`+
+    `<button type="button" onclick='category("SANITARY")'>SANITARY</button>`;
 
-  document.getElementById('categoryGrid').innerHTML=cats.length?cats.map((c,i)=>{
+  document.getElementById('categoryGrid').innerHTML=ordered.length?ordered.map((c,i)=>{
     const icons=['🚽','🚰','🛁','🧴','🔧','🚿','💧','▣'];
     return `<div class="cat" role="button" tabindex="0"
       onclick='category(${JSON.stringify(c)})'
@@ -255,16 +326,14 @@ function buildCategoryUI(){
     .sort((a,b)=>a.localeCompare(b));
 
   document.getElementById('productNameGrid').innerHTML=names.length?names.map((n,i)=>{
-    const icons=['◉','◌','▣','◆','◇','●'];
     return `<div class="cat" role="button" tabindex="0"
       onclick='productName(${JSON.stringify(n)})'
       onkeydown='if(event.key==="Enter"||event.key===" ")productName(${JSON.stringify(n)})'>
-      <div class="catIcon">${icons[i%icons.length]}</div>
       <b>${esc(n)}</b>
     </div>`;
   }).join(''):'<p>No product names found.</p>';
 
-  document.getElementById('footerCategories').innerHTML=cats.map(c=>
+  document.getElementById('footerCategories').innerHTML=ordered.map(c=>
     `<li style="cursor:pointer" onclick="category(${JSON.stringify(c)})">${esc(c)}</li>`
   ).join('');
 
@@ -274,6 +343,14 @@ function buildCategoryUI(){
   ).join('');
 }
 
+function toggleCpMenu(){
+  document.getElementById('cpMenu')?.classList.toggle('open');
+}
+function closeCpMenu(){document.getElementById('cpMenu')?.classList.remove('open');}
+document.addEventListener('click',function(e){
+  const cp=document.getElementById('cpMenu');
+  if(cp && !cp.contains(e.target)) cp.classList.remove('open');
+});
 async function load(){
   try{
     let r=await fetch(JSON_URL+'?v='+Date.now());
@@ -446,7 +523,7 @@ function sendWhatsAppOrder(){
 
   const total=document.getElementById('total').textContent;
   const message=
-`JAGNATH BATHWARE - NEW ORDER
+`JAGNATH SANITARIES - NEW ORDER
 
 Customer Name: ${name}
 Mobile: ${phone}
