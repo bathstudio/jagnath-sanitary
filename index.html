@@ -233,12 +233,14 @@ function buildCategoryUI(){
   const cats=getCategories();
 
   document.getElementById('navCategories').innerHTML=
-    `<button onclick="allProducts()">☰ ALL PRODUCTS</button>`+
-    cats.map(c=>`<button onclick="category(${JSON.stringify(c)})">${esc(c)}</button>`).join('');
+    `<button type="button" onclick="allProducts()">☰ ALL PRODUCTS</button>`+
+    cats.map(c=>`<button type="button" onclick='category(${JSON.stringify(c)})'>${esc(c)}</button>`).join('');
 
   document.getElementById('categoryGrid').innerHTML=cats.length?cats.map((c,i)=>{
     const icons=['🚽','🚰','🛁','🧴','🔧','🚿','💧','▣'];
-    return `<div class="cat" onclick="category(${JSON.stringify(c)})">
+    return `<div class="cat" role="button" tabindex="0"
+      onclick='category(${JSON.stringify(c)})'
+      onkeydown='if(event.key==="Enter"||event.key===" ")category(${JSON.stringify(c)})'>
       <div class="catIcon">${icons[i%icons.length]}</div>
       <b>${esc(c)}</b>
     </div>`;
@@ -300,11 +302,32 @@ function searchProducts(){
   document.getElementById('productsSection').scrollIntoView({behavior:'smooth'});
 }
 
+function cleanCategory(x){
+  return String(x ?? '')
+    .replace(/&amp;/gi,'&')
+    .replace(/\s+/g,' ')
+    .trim()
+    .toUpperCase();
+}
+
 function category(c){
-  const value=String(c).toUpperCase().trim();
-  const result=P.filter(p=>String(p.category||'').toUpperCase().trim()===value);
-  render(result,c.toUpperCase());
-  document.getElementById('productsSection').scrollIntoView({behavior:'smooth'});
+  const wanted=cleanCategory(c);
+
+  const result=P.filter(p=>{
+    const actual=cleanCategory(p.category);
+    return actual===wanted || actual.includes(wanted) || wanted.includes(actual);
+  });
+
+  if(!result.length){
+    alert('Is category me koi product nahi mila: '+c);
+    return;
+  }
+
+  render(result,String(c).toUpperCase()+' PRODUCTS');
+  document.getElementById('productsSection').scrollIntoView({
+    behavior:'smooth',
+    block:'start'
+  });
 }
 
 function brand(b){
